@@ -1,0 +1,13 @@
+@media (min-width: 1280px){
+    .vh-media-100{
+        min-height:100vh;
+    }
+}
+
+.background-hero{
+    background-image: url('img/big-hero.jpg');
+    background-size:cover; object-fit: cover;
+}
+.color-opacity{
+    background-color: rgba(0, 0, 0, 0.74);
+}
