@@ -1,6 +1,9 @@
-@media (min-width: 1280px){
+@media (min-width: 1100px){
     .vh-media-100{
         min-height:100vh;
+    }
+    .p-media-0{
+        padding: 0;
     }
 }
 
