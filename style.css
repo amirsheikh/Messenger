@@ -4,6 +4,13 @@
     }
 }
 
+
+@media (min-width: 768px){
+    .search-size{
+        width: 50%;
+    }
+}
+
 .background-hero{
     background-image: url('img/big-hero.jpg');
     background-size:cover; object-fit: cover;
