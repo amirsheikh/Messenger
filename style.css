@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('font/Yekan.ttf');
+  }
+@font-face {
+    font-family: 'fun';
+    src: url('font/Lalezar-Regular.ttf');
+  }
+  body {
+    font-family: 'MyWebFont', Fallback, sans-serif;
+  }
+
 @media (min-width: 1100px){
     .vh-media-100{
         min-height:100vh;
@@ -9,7 +21,7 @@
 
 
 @media (min-width: 768px){
-    .search-size{
+    .w-sm-50{
         width: 50%;
     }
 }
@@ -18,6 +30,14 @@
     background-image: url('img/big-hero.jpg');
     background-size:cover; object-fit: cover;
 }
+.background-about{
+    background-image: url('img/about.jpg');
+    background-size:cover; object-fit: cover;
+    background-attachment: fixed;
+}
 .color-opacity{
     background-color: rgba(0, 0, 0, 0.74);
+}
+.rtl-vector{
+    transform: scaleX(-1) !important; 
 }
