@@ -41,3 +41,7 @@
 .rtl-vector{
     transform: scaleX(-1) !important; 
 }
+
+.curser-click{
+    cursor: pointer;
+}
