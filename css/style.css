@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'MyWebFont';
-    src: url('font/Yekan.ttf');
+    src: url('../font/Yekan.ttf');
   }
 @font-face {
     font-family: 'fun';
-    src: url('font/Lalezar-Regular.ttf');
+    src: url('../font/Lalezar-Regular.ttf');
   }
   body {
     font-family: 'MyWebFont', Fallback, sans-serif;
@@ -27,11 +27,11 @@
 }
 
 .background-hero{
-    background-image: url('img/big-hero.jpg');
+    background-image: url('../img/big-hero.jpg');
     background-size:cover; object-fit: cover;
 }
 .background-about{
-    background-image: url('img/about.jpg');
+    background-image: url('../img/about.jpg');
     background-size:cover; object-fit: cover;
     background-attachment: fixed;
 }
