@@ -143,9 +143,9 @@
         </div>
     </section>
     <section>
-        <div class="container-fluid  p-5">
-            <div class="row justify-content-between">
-                <div data-aos="flip-up" class="col-sm-5">
+        <div class="container-fluid">
+            <div class="row justify-content-between bg-dark text-footer pt-3 px-5">
+                <div data-aos="flip-up" class="col-12 col-sm-5">
                     <div class="mt-3 px-1">
                         <div class="h5" style="font-family: fun;">با ما در ارتباط باشید</div>
                         <img src="{% static 'img/marker.svg' %}" height="25" width="100" class="mb-4">
@@ -185,16 +185,20 @@
                               سپاه کوچه مستقیمی پلاک 9 واحد4</div>
                             </div>
                         </div>
-                        <!-- <div class="m-2">
+                        <!-- <div class="mt-2">
                             <iframe class="w-100 rounded" height="200"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.9642139890552!2d51.43725312916575!3d35.70513998778088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e022c5ec300a5%3A0x4e20b755281adeb0!2sTehran%20Province%2C%20Tehran%2C%20Vahidiyeh%2C%20Mostaqimi%20St%2C%20Iran!5e0!3m2!1snl!2snl!4v1627773797676!5m2!1snl!2snl"
                              allowfullscreen></iframe>
                         </div> -->
                     </div>
                 </div>
-                <div data-aos="flip-down" class="col-md-5">    
+                <div data-aos="flip-down" class="col-sm-5">
+                    <div class="mt-3 px-1">
+                        <div class="h5" style="font-family: fun;">ارسال پیام</div>
+                        <img src="{% static 'img/marker.svg' %}" height="25" width="100" class="mb-4">
+                      </div>    
                     <form action="/mail.php" method="POST">
-                        <div class="form-group my-2">
+                        <div class="form-group mb-2">
                             <input class="form-control border-dark" placeholder="نام" type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group my-2">
@@ -205,9 +209,10 @@
                             <textarea class="form-control border-dark" style="resize: none;" id="message"
                                 name="message" rows="4" required placeholder="پیام"></textarea>
                         </div>
-                        <button class="btn btn-primary mt-2 float-start" type="submit" name="submit">ارسال</button>
+                        <button class="btn btn-outline-light mt-2 float-start" type="submit" name="submit">ارسال</button>
                     </form>
                 </div>
+                <h5 class="w-100 text-center p-2 bg-dark border-light mt-4 border-light border-top" style = "font-size: 15px;">&copy; استفاده به هر شکل در صورت ارجاع به صفحه سازنده بلامانع است.</h5>
             </div>
         </div>
     </section>

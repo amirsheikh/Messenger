@@ -1,13 +1,21 @@
 @font-face {
-    font-family: 'MyWebFont';
-    src: url('../font/Yekan.ttf');
-  }
+    font-family: 'Yekan';
+    src: url('../font/Yekan.eot'); /* IE9 Compat Modes */
+    src: url('../font/Yekan.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/Yekan.woff2') format('woff2'), /* Modern Browsers */
+    url('../font/Yekan.woff') format('woff'), /* Modern Browsers */
+    url('../font/Yekan.otf') format('opentype'), /* Open Type Font */
+    url('../font/Yekan.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../font/Yekan.svg#Yekan') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
 @font-face {
     font-family: 'fun';
     src: url('../font/Lalezar-Regular.ttf');
   }
   body {
-    font-family: 'MyWebFont', Fallback, sans-serif;
+    font-family: 'Yekan', Fallback, sans-serif;
   }
 
 @media (min-width: 1100px){
@@ -74,4 +82,7 @@
 .form-input button{
     width: 100%;
     margin-bottom: 20px;
+}
+.text-footer{
+    color: rgba(255, 255, 255, 0.774);
 }
