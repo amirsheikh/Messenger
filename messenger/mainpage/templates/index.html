@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mygram v-0.1</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/aos.css" />
-    <link rel="stylesheet" href="css/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body dir="rtl">
     <nav class="navbar navbar-expand-sm fixed-top bg-light navbar-light px-5 
     border-bottom border-dark">
         <div class ="container-fluid">
             <img data-aos="fade-up" data-aos-delay="1000" 
-            data-aos-duration = "500" src="img/messenger.svg" class = 
+            data-aos-duration = "500" src="{% static  'img/messenger.svg' %}" class = 
             "navbar-brand" height="50px">
             <button class="navbar-toggler" type = "button" data-bs-toggle = 
             "collapse" data-bs-target = "#navmenu">
@@ -28,14 +29,14 @@
                         <a data-bs-toggle="modal" data-bs-target="#signupModal"
                         class="nav-link d-flex align-items-center curser-click">
                             <div class="mx-1">ثبت نام</div>
-                            <img src="img/add-user.svg" height="20" width="20">
+                            <img src="{% static 'img/add-user.svg' %}" height="20" width="20">
                         </a>
                     </li>
                     <li class="nav-item border border-dark  rounded m-1 p-1
                     p-md-0 my-md-0 align-items-center">
                         <a data-bs-toggle="modal" data-bs-target="#loginModal" class="nav-link d-flex align-items-center curser-click">
                             <div class="mx-1">ورود</div>
-                            <img src="img/profile.svg" height="20" width="20">
+                            <img src="{% static 'img/profile.svg' %}" height="20" width="20">
                         </a>
                     </li>
                 </ul>
@@ -62,7 +63,7 @@
                 </div>
                 <img data-aos="fade-right" data-aos-delay="100" 
                 class="img-fluid w-25 mx-5 pt-sm-0 d-none d-sm-block rtl-vector" 
-                src="img/test.svg" alt="work-chat">
+                src= "{% static 'img/test.svg' %}" alt="work-chat">
             </div>
         </div>
     </section>
@@ -126,7 +127,7 @@
         <div class = "container-fluid background-about">
             <div class="row p-5 justify-content-between align-items-center color-opacity">
                 <img data-aos="zoom-in" data-aos-delay="450"
-                class="col-sm-5 img-fluid rtl-vector" src="img/hello3.svg">
+                class="col-sm-5 img-fluid rtl-vector" src="{% static 'img/hello3.svg' %}">
                 <div data-aos="zoom-in" data-aos-duration="1000" 
                 class="col-sm-6 p-0 p-sm-5 mt-3 text-light">
                     <h2>سلام!</h2>
@@ -147,7 +148,7 @@
                 <div data-aos="flip-up" class="col-sm-5">
                     <div class="mt-3 px-1">
                         <div class="h5" style="font-family: fun;">با ما در ارتباط باشید</div>
-                        <img src="img/marker.svg" height="25" width="100" class="mb-4">
+                        <img src="{% static 'img/marker.svg' %}" height="25" width="100" class="mb-4">
                       </div>
                       <div class="mt-53 px-1">
                         <div class="row justify-content-between"> 
@@ -194,106 +195,96 @@
                 <div data-aos="flip-down" class="col-md-5">    
                     <form action="/mail.php" method="POST">
                         <div class="form-group my-2">
-                            <label for="name" class="form-label fw-bolder">نام</label>
-                            <input class="form-control border-dark" type="text" id="name" name="name" required>
+                            <input class="form-control border-dark" placeholder="نام" type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group my-2">
-                            <label for="email" class="form-label fw-bolder">نام خانوادگی</label>
-                            <input class="form-control border-dark" type="email" id="email" name="_replyto" required>
+                            <input class="form-control border-dark" type="email"
+                           placeholder="ایمیل" id="email" name="_replyto" required>
                         </div>
                         <div class="form-group my-2">
-                            <label for="message" class="form-label fw-bolder">پیام</label>
                             <textarea class="form-control border-dark" style="resize: none;" id="message"
-                                name="message" rows="4" required></textarea>
+                                name="message" rows="4" required placeholder="پیام"></textarea>
                         </div>
-                        <button class="btn btn-primary mt-2" type="submit" name="submit">ارسال</button>
+                        <button class="btn btn-primary mt-2 float-start" type="submit" name="submit">ارسال</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- login modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- login modal -->
+    <div id="loginModal" class="modal fade text-center">
         <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-light">
-                <h5 class="modal-title" id="exampleModalLabel">ورود</h5>
-                <i type="button" class="bi bi-x-circle" data-bs-dismiss="modal" aria-label="Close"></i>
-            </div>
-            <div class="modal-body">
-                <div dir="ltr" class="input-group my-2 flex-nowrap">
-                    <input dir="rtl" type="mobile" placeholder="شماره موبایل" class="form-control border-dark" id="mobile"
-                        name="mobile" required></input>
-                    <span class="input-group-text bg-dark border-dark text-light"
-                    id="addon-wrapping">
-                    <i class="bi bi-telephone"></i>
-                    </span>
+            <div class="col-lg-8 col-sm-8 col-12 main-section bg-light">
+                <div class="modal-content px-3">
+                    <div class="col-lg-12 col-sm-12 col-12 user-img">
+                        <img src="{% static 'img/profile.svg' %}" class="bg-light rounded-circle">
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12 user-name">
+                        <h1>ورود</h1>
+                        <i type="button" class="bi bi-x-circle close text-end" data-bs-dismiss="modal" aria-label="Close"></i>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12 form-input">
+                        <form>
+                            <div class="input-group mb-2">
+                                <input type="tel" class="form-control"
+                                placeholder="شماره تلفن">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control"
+                                placeholder="رمز عبور">
+                            </div>
+                            <button type="submit" class="btn btn-primary">ورود</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-12 mb-3">
+                        <div class="curser-click">فراموشی رمز عبور</div>
+                    </div>
                 </div>
-                <div dir="ltr" class="input-group my-2 flex-nowrap">
-                    <input dir="rtl" placeholder="رمز عبور" type="password" class="form-control border-dark" id="pass"
-                        name="pass" required></input>
-                    <span class="input-group-text bg-dark border-dark text-light"
-                    id="addon-wrapping">
-                    <i class="bi bi-shield-lock"></i>
-                    </span>
-                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark">ورود</button>
-            </div>
-        </div>
         </div>
     </div>
 
     <!-- signup modal -->
 
-    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id="signupModal" class="modal fade text-center">
         <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-light">
-            <h5 class="modal-title" id="exampleModalLabel">ثبت نام</h5>
-            <i type="button" class="bi bi-x-circle" data-bs-dismiss="modal" aria-label="Close"></i>
-            </div>
-            <div class="modal-body">
-                <form action="/mail.php" method="POST">
-                    <div dir="ltr" class="input-group my-2 flex-nowrap">
-                        <input dir="rtl" type="mobile" placeholder="شماره موبایل" class="form-control border-dark" id="mobile"
-                            name="mobile" required></input>
-                        <span class="input-group-text bg-dark border-dark text-light"
-                        id="addon-wrapping">
-                        <i class="bi bi-telephone"></i>
-                        </span>
+            <div class="col-lg-8 col-sm-8 col-12 main-section bg-light">
+                <div class="modal-content px-3">
+                    <div class="col-lg-12 col-sm-12 col-12 user-img">
+                        <img src="{% static 'img/add-user.svg' %}" class="bg-light
+                        rounded-circle px-1">
                     </div>
-                    <div dir="ltr" class="input-group my-2 flex-nowrap">
-                        <input dir="rtl" placeholder="رمز عبور" type="password" class="form-control border-dark" id="pass"
-                            name="pass" required></input>
-                        <span class="input-group-text bg-dark border-dark text-light"
-                        id="addon-wrapping">
-                        <i class="bi bi-shield-lock"></i>
-                        </span>
+                    <div class="col-lg-12 col-sm-12 col-12 user-name">
+                        <h1>ورود</h1>
+                        <i type="button" class="bi bi-x-circle close text-end" data-bs-dismiss="modal" aria-label="Close"></i>
                     </div>
-                    <div dir="ltr" class="input-group my-2 flex-nowrap">
-                        <input dir="rtl" placeholder="نام" type="text" class="form-control border-dark" id="text"
-                            name="text" required></input>
-                        <span class="input-group-text bg-dark border-dark text-light"
-                        id="addon-wrapping">
-                        <i class="bi bi-person"></i>
-                        </span>
+                    <div class="col-lg-12 col-sm-12 col-12 form-input">
+                        <form>
+                            <div class="input-group mb-2">
+                                <input type="tel" class="form-control"
+                                placeholder="شماره تلفن">
+                            </div>
+                            <div class="input-group mb-2">
+                                <input type="password" class="form-control"
+                                placeholder="رمز عبور">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control"
+                                placeholder="نام">
+                            </div>
+                            <button type="submit" class="btn btn-primary">ورود</button>
+                        </form>
                     </div>
-                </form>
-                <div class="modal-footer mt-3">
-                    <button type="button" class="btn btn-outline-dark">ثبت نام</button>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 
     <script 
-    src="js/bootstrap.bundle.js"></script>
+    src="{% static 'js/bootstrap.bundle.js' %}"></script>
 
-    <script src="js/aos.js"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
     <script>
         AOS.init();
     </script>
