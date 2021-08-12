@@ -17,11 +17,32 @@
         <div class ="container-fluid">
             <img data-aos="fade-up" data-aos-delay="1000" 
             data-aos-duration = "500" src="{% static  'img/messenger.svg' %}" class = 
-            "navbar-brand" height="50px">
+            "navbar-brand float-left" height="50px">
             <button class="navbar-toggler" type = "button" data-bs-toggle = 
             "collapse" data-bs-target = "#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {% if user.is_authenticated %}
+            <div dir= "ltr" class="collapse navbar-collapse align-items-center" id = "navmenu">
+                <ul class="navbar-nav">
+                    <li dir="rtl" class="nav-item dropdown rounded border-dark border align-items-center text-end">
+                        <div src="{% static  'img/down-arrow.svg' %}" dir="ltr" class="p-2 align-items-center" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static  'img/down-arrow.svg' %}" height="20" width="20" class="me-3 ms-1">
+                            خوش آمدید
+                            <img height="40" width="40" class="rounded ms-1" src = "{{avatar.url}}">
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li class = "text-center"><a class="dropdown-item">{{ name }}</a></li>
+                          <li class = "text-end"><hr class="dropdown-divider"></li>
+                          <li class = "text-end"><a class="dropdown-item" href="#">ورود به پیام رسان</a></li>
+                          <li class = "text-end"><a class="dropdown-item" href="#">تنظیمات</a></li>
+                          <li class = "text-end"><hr class="dropdown-divider"></li>
+                          <li class = "text-end"><a class="dropdown-item" href="#">خروج</a></li>
+                        </ul>
+                      </li>
+                </ul>
+            </div>
+            {% else %}
             <div dir= "ltr" class="collapse navbar-collapse align-items-center" id = "navmenu">
                 <ul class="navbar-nav">
                     <li class="nav-item  border border-dark rounded m-1 p-1
@@ -41,6 +62,7 @@
                     </li>
                 </ul>
             </div>
+            {% endif %}
         </div>
     </nav>
     <section class="text-light text-center text-sm-end background-hero">
@@ -67,8 +89,6 @@
             </div>
         </div>
     </section>
-
-
     <section data-aos="zoom-in-up" class="bg-primary p-3 text-light">
         <div class="container">
             <div class = "d-md-flex justify-content-between align-items-center">
@@ -83,6 +103,29 @@
             </div>
         </div>
     </section>
+    {% if messages %}
+     {% for message in messages %}
+     <div class="modal" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            {% if message.level != DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="modal-body text-success">        
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="modal-body text-danger">        
+                    {{ message }}
+                </div>
+            {% endif %}
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+          </div>
+        </div>
+      </div>    
+      {% endfor %}
+    {% endif %}
+
 
     <section class = "p-2">
         <div class="container-fluid text-center">
@@ -231,12 +274,13 @@
                     </div>
                     <div class="col-lg-12 col-sm-12 col-12 form-input">
                         <form>
+                            {% csrf_token %}
                             <div class="input-group mb-2">
-                                <input type="tel" class="form-control"
+                                <input type="tel" name="username" class="form-control"
                                 placeholder="شماره تلفن">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control"
+                                <input type="password" name="password" class="form-control"
                                 placeholder="رمز عبور">
                             </div>
                             <button type="submit" class="btn btn-primary">ورود</button>
@@ -249,10 +293,9 @@
             </div>
         </div>
     </div>
-
     <!-- signup modal -->
 
-    <div id="signupModal" class="modal fade text-center">
+    <div id="signupModal" class="modal fade text-center" method="POST" action="/signup/" >
         <div class="modal-dialog modal-dialog-centered">
             <div class="col-lg-8 col-sm-8 col-12 main-section bg-light">
                 <div class="modal-content px-3">
@@ -261,37 +304,42 @@
                         rounded-circle px-1">
                     </div>
                     <div class="col-lg-12 col-sm-12 col-12 user-name">
-                        <h1>ورود</h1>
+                        <h1>ثبت نام</h1>
                         <i type="button" class="bi bi-x-circle close text-end" data-bs-dismiss="modal" aria-label="Close"></i>
                     </div>
                     <div class="col-lg-12 col-sm-12 col-12 form-input">
-                        <form>
+                        <form method="POST" action="/signup/">
+                            {% csrf_token %}
                             <div class="input-group mb-2">
-                                <input type="tel" class="form-control"
-                                placeholder="شماره تلفن">
+                                <input type="tel" name = 'username' class="form-control"
+                                placeholder="شماره تلفن" required>
                             </div>
                             <div class="input-group mb-2">
-                                <input type="password" class="form-control"
-                                placeholder="رمز عبور">
+                                <input type="password" name = 'password' class="form-control"
+                                placeholder="رمز عبور" required>
                             </div>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control"
-                                placeholder="نام">
+                                name = 'name' placeholder="نام" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">ورود</button>
+                            <button type="submit" class="btn btn-primary">ثبت نام</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script 
     src="{% static 'js/bootstrap.bundle.js' %}"></script>
 
     <script src="{% static 'js/aos.js' %}"></script>
     <script>
         AOS.init();
+        tmp = document.getElementById('myModal')
+        if(tmp != null){
+           var myModal = new bootstrap.Modal(tmp)
+           myModal.show()
+        }
     </script>
 </body>
 </html>
