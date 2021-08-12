@@ -86,3 +86,12 @@
 .text-footer{
     color: rgba(255, 255, 255, 0.774);
 }
+
+#formFile::before {
+    content: "تغییر تصویر";
+    position: absolute;
+    z-index: 2;
+    display: block;
+    background-color: #eee;
+    width: 80px;
+  }
